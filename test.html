@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>SYSTEM_FAILURE_HAZMN_EXEC</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff41; /* 經典駭客綠 */
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden;
+            margin: 0;
+            padding: 20px;
+        }
+        #console {
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
+        .error { color: #ff0000; font-weight: bold; }
+        .success { color: #00ff00; }
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: #00ff41;
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+    <div id="console"></div>
+    <span class="cursor"></span>
+
+    <script>
+        const logs = [
+            "> INITIALIZING HAZMN_BYPASS_v2.0...",
+            "> CONNECTION ESTABLISHED TO REMOTE_SERVER: 192.168.1.254",
+            "> BRUTE FORCING PASSWORD...",
+            "> ATTEMPT 1: FAILED",
+            "> ATTEMPT 2: FAILED",
+            "> ATTEMPT 3: SUCCESS!",
+            "> BYPASSING FIREWALL...",
+            "> [ERROR] SYSTEM INTRUSION DETECTED!",
+            "> OVERRIDING SECURITY PROTOCOLS...",
+            "> ACCESSING CIVIL_ENGINEERING_DATABASE...",
+            "> DOWNLOADING ENCRYPTED_FILES...",
+            "> 10%... 35%... 67%... 100% [DONE]",
+            "> INJECTING ROBLOX_MODS...",
+            "> SYSTEM COMPROMISED.",
+            "> HAZMN HAS TAKEN CONTROL."
+        ];
+
+        let i = 0;
+        const consoleDiv = document.getElementById('console');
+
+        function typeLog() {
+            if (i < logs.length) {
+                let p = document.createElement('div');
+                if (logs[i].includes("ERROR")) p.className = "error";
+                if (logs[i].includes("SUCCESS")) p.className = "success";
+                
+                p.innerText = logs[i];
+                consoleDiv.appendChild(p);
+                i++;
+                // 自動滾動到最下方
+                window.scrollTo(0, document.body.scrollHeight);
+                setTimeout(typeLog, Math.random() * 800 + 200); // 隨機延遲看起來更像真的
+            }
+        }
+
+        typeLog();
+    </script>
+</body>
+</html>
